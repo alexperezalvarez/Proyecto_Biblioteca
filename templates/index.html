@@ -3,9 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Index</title>
+  
+  <title>{% block title %}Index{% endblock %}</title>
+  {% block extracss %}
+  {% endblock %}
 </head>
 <body>
+  {% block body %}
   <h1>Este es el index de mi proyecto</h1>
+  {% endblock %}
+
+  {% block extrajs %}
+  {% endblock %}
 </body>
 </html>

@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% block title %}
+ Creacion de Autores
+{% endblock %}
+<body>
+  {% block body %}
+  <form method="POST">
+    {% csrf_token %}
+    {{ autor_form.as_p }}
+    {% if autor_form %}
+    {% endif %}
+    {% for autor in autor_form %}
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Crear</button>
+  </form>
+  {% endblock %}
+  </body>
+</html>
+
