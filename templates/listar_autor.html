@@ -16,6 +16,7 @@ Listado de  Autores
       <th>Apellidos</th>
       <th>Nacionalidad</th>
       <th>Descripcion</th>
+      <th>Opciones</th>
     </tr>
   </thead>
   <tbody>
@@ -26,6 +27,9 @@ Listado de  Autores
         <td>{{autor.apellidos}}</td>
         <td>{{autor.nacionalidad}}</td>
         <td>{{autor.descripcion}}</td>
+        <td>
+          <a href="{% url 'editar_autor' autor.id %}">Editar</a>
+        </td>
       </tr>
     {% endfor %}
   </tbody>

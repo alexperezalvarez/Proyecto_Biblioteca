@@ -6,12 +6,13 @@
   {% block body %}
   <form method="POST">
     {% csrf_token %}
+    {% if error %}
+      <h2>{{error}}</h2>
+    {% else %}
     {{ autor_form.as_p }}
-    {% if autor_form %}
-    {% endif %}
-    {% for autor in autor_form %}
-    {% endfor %}
     <button type="submit" class="btn btn-primary">Crear</button>
+    {% endif %}
+    
   </form>
   {% endblock %}
   </body>
