@@ -2,10 +2,18 @@ from django.shortcuts import redirect, render
 from django.core.exceptions import *
 from .forms import *
 from .models import *
-
+from django.views.generic import *
 # Create your views here.
-def Home(request):
-  return render(request, 'index.html')
+
+"""
+1- dispctch(): Valida la peticion y elige que metodo HTTP se utilizo para la solicitud
+2- http_method_not_allowed(): Retorna un error cuando se utiliza un metodo HTTP no soportado o definido
+3- options()
+"""
+
+
+class Inicio(TemplateView):
+   template_name = 'index.html'
 
 def crearAutor(request):
   if request.method == 'POST':
