@@ -1,53 +1,60 @@
 {% extends 'index.html' %}
 {% block title %}
-Listado de  Autores
+Listado de Autores
 {% endblock %}
 
 {% block body %}
 
-
 {% if autores %}
 
-<div class="card">
-  <div class="card-header">
-    <strong class = "card-title">Listado de Autores</strong>
+<div class="container mt-4">
+  <!-- Card con Encabezado -->
+  <div class="card shadow-lg">
+    <div class="card-header bg-primary text-white text-center">
+      <h4 class="card-title m-0">📚 Listado de Autores</h4>
+    </div>
+
+    <div class="card-body">
+      <!-- Tabla Responsive -->
+      <div class="table-responsive">
+        <table class="table table-hover table-bordered text-center">
+          <thead class="table-dark">
+            <tr>
+              <th>#</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Nacionalidad</th>
+              <th>Descripción</th>
+              <th>Opciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for autor in autores %}
+              <tr>
+                <td><strong>{{ autor.id }}</strong></td>
+                <td>{{ autor.nombre }}</td>
+                <td>{{ autor.apellidos }}</td>
+                <td><span class="badge  text-dark">{{ autor.nacionalidad }}</span></td>
+                <td>{{ autor.descripcion }}</td>
+                <td>
+                  <a href="{% url 'libro:editar_autor' autor.id %}" class="btn btn-sm btn-primary me-2">
+                    ✏️ Editar
+                  </a>
+                  <a href="{% url 'eliminar_autor' autor.id %}" class="btn btn-sm btn-warning">
+                    ❌ Eliminar
+                  </a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
-<div >
-<table  class="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Nombres</th>
-      <th>Apellidos</th>
-      <th>Nacionalidad</th>
-      <th>Descripcion</th>
-      <th>Opciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for autor in autores %}
-      <tr>
-        <td>{{autor.id}}</td>
-        <td>{{autor.nombre}}</td>
-        <td>{{autor.apellidos}}</td>
-        <td>{{autor.nacionalidad}}</td>
-        <td>{{autor.descripcion}}</td>
-        <td>
-          <a href="{% url 'libro:editar_autor' autor.id %}" class="btn btn-primary">Editar</a>
-          <!-- <a href="{% url 'libro:editar_autor' autor.id %}">Editar</a> -->
-          <a href="{% url 'eliminar_autor' autor.id %}">Eliminar</a>
-
-
-        </td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
 </div>
 
 {% else %}
-<h1>No exiten autores registrados</h1>
+<h1 class="text-center text-danger mt-5">🚫 No existen autores registrados</h1>
 {% endif %}
 
 {% endblock %}
