@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block html %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="card p-4 shadow-lg" style="width: 100%; max-width: 400px; background: rgba(142, 139, 139, 0.7); color: white; border-radius: 10px;">
+    <div class="card-header text-center bg-primary text-white" style="border-radius: 10px 10px 0 0;">
+      <h4>Iniciar Sesión</h4>
+    </div>
+    <div class="card-body">
+      <form method="POST">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+          <label for="username" class="form-label">Nombre de Usuario</label>
+          <input type="text" class="form-control bg-dark text-white border-secondary" id="username" name="username" placeholder="Ingrese su nombre de usuario" required>
+        </div>
+        
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control bg-dark text-white border-secondary" id="password" name="password" placeholder="Ingrese su contraseña" required>
+        </div>
+
+        <!-- <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Recordarme</label>
+        </div>-->
+
+
+        <div class="text-center">
+          <!--<button type="submit" class="btn btn-primary w-100">Ingresar</button>-->
+          <a href="" class="btn btn-primary w-100" >Ingresar</a>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer text-center text-white">
+      <small>¿No tienes una cuenta? <a href="#" class="text-primary">Regístrate</a></small>
+    </div>
+  </div>
+</div>
+{% endblock %}

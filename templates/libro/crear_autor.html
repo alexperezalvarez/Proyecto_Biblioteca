@@ -21,12 +21,12 @@ Creación de Autores
 
         <div class="mb-2">
           <label for="id_nombre" class="form-label">Nombre</label>
-          <input type="text" class="form-control form-control-sm" id="id_nombre" name="nombre" placeholder="Nombre">
+          <div class="col-12 col-md-9">{{ autor_form.nombre }}</div>
         </div>
 
         <div class="mb-2">
           <label for="id_apellidos" class="form-label">Apellidos</label>
-          <input type="text" class="form-control form-control-sm" id="id_apellidos" name="apellidos" placeholder="Apellidos">
+          <div class="col-12 col-md-9">{{ autor_form.apellidos }}</div>
         </div>
 
         <div class="mb-3">
@@ -141,16 +141,13 @@ Creación de Autores
             <option value="Venezuela">Venezuela</option>
           </select>
         </div>
-
         <div class="mb-2">
-          <label for="id_descripcion" class="form-label">Descripción</label>
-          <textarea class="form-control form-control-sm" id="id_descripcion" name="descripcion" rows="2" placeholder="Breve descripción"></textarea>
+          <label for="id_descripcion" class="form-control-label">Descripción</label>
+          <div class="col-12 col-md-9">{{ autor_form.descripcion }}</div>
         </div>
-
         <div class="text-center mt-3">
           <button type="submit" class="btn btn-primary btn-sm px-4">Crear</button>
         </div>
-
       </form>
     </div>
   </div>

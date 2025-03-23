@@ -1,6 +1,7 @@
 
 from django.shortcuts import redirect, render
 from django.core.exceptions import *
+from django.urls import reverse_lazy
 from .forms import *
 from .models import *
 from django.views.generic import *
@@ -15,13 +16,35 @@ from django.views.generic import *
 
 class Inicio(TemplateView):
    template_name = 'index.html'
-
+class ServiciosView(TemplateView):
+    template_name = 'servicios.html'
 class ListadoAutor(ListView):
    model = Autor
    template_name = 'libro/listar_autor.html'
    context_object_name = 'autores'
    queryset = Autor.objects.filter(estado = True)
 
+class ActualizarAutor(UpdateView):
+   model = Autor
+   template_name = 'libro/crear_autor.html'
+   form_class = AutorForm
+   success_url = reverse_lazy('libro/listar_autor.html')
+
+class CrearAutor(CreateView):
+   model = Autor
+   template_name = 'libro/crear_autor.html'
+   form_class = AutorForm
+   success_url = reverse_lazy('libro/listar_autor.html')
+
+class EliminarAutor(DeleteView):
+   model = Autor
+   template_name='libro/eliminar_autor.html'
+
+   def post(self, request,pk,*args,**kwargs):
+      object = Autor.objects.get(id = pk)
+      object.estado = False
+      object.save()
+      return redirect('libro:listar_autor')
 
 def crearAutor(request):
   if request.method == 'POST':
@@ -65,3 +88,5 @@ def eliminarAutor(request, id):
       autor.save()
       return redirect('/libro/listar_autor') 
    return render(request, 'libro/eliminar_autor.html',{'autor':autor})
+
+
