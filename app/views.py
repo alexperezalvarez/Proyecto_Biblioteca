@@ -1,3 +1,4 @@
+
 from django.shortcuts import redirect, render
 from django.core.exceptions import *
 from .forms import *
@@ -14,6 +15,13 @@ from django.views.generic import *
 
 class Inicio(TemplateView):
    template_name = 'index.html'
+
+class ListadoAutor(ListView):
+   model = Autor
+   template_name = 'libro/listar_autor.html'
+   context_object_name = 'autores'
+   queryset = Autor.objects.filter(estado = True)
+
 
 def crearAutor(request):
   if request.method == 'POST':
@@ -44,7 +52,7 @@ def editarAutor(request, id):
                 return redirect('index')  # Redirigir solo si se guarda el formulario
 
         # Si hay errores o es un método GET, renderiza el formulario
-        return render(request, 'lirbo/crear_autor.html', {'autor_form': autor_form, 'error': error})
+        return render(request, 'libro/crear_autor.html', {'autor_form': autor_form, 'error': error})
 
     except ObjectDoesNotExist as e:
         error = f"Error: {e}"
@@ -55,5 +63,5 @@ def eliminarAutor(request, id):
    if request.method == 'POST':
       autor.estado=False
       autor.save()
-      return redirect('libro/listar_autor') 
+      return redirect('/libro/listar_autor') 
    return render(request, 'libro/eliminar_autor.html',{'autor':autor})

@@ -1,20 +1,32 @@
 {% load static%}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>{% block title %}Index{% endblock %}</title>
-</head>
-<body>
-  {% block body %}
-  <h1>Este es el index de mi proyecto</h1>
+    <title>{% block title %}Index{% endblock %}</title>
+    <link
+      href="{% static 'lib/bootstrap-5.3.3-dist/css/bootstrap.min.css' %}"
+      rel="stylesheet"
+    />
+    <link
+      href="{% static 'css/style.css' %}"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    {% include 'navbar.html'  %}
 
+    {% block body %}
+    <h1>Este es el index de mi proyecto</h1>
+
+    {% endblock %}
+    <div style="position: fixed; bottom: 0; text-align: center; width: 100%">
+      <!-- Footer -->
+      {% include 'footer.html' %}
     </div>
-        <!-- Footer -->
-        {% include 'footer.html' %}
-    </div>
-  {% endblock %}
-</body>
+    <script src="{% static 'lib/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'lib/bootstrap-5.3.3-dist/js/bootstrap.min.js' %}"></script>
+  </body>
 </html>

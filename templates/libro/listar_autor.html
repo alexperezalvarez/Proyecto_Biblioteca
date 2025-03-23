@@ -8,7 +8,13 @@ Listado de  Autores
 
 {% if autores %}
 
-<table>
+<div class="card">
+  <div class="card-header">
+    <strong class = "card-title">Listado de Autores</strong>
+  </div>
+</div>
+<div >
+<table  class="table">
   <thead>
     <tr>
       <th>#</th>
@@ -28,7 +34,8 @@ Listado de  Autores
         <td>{{autor.nacionalidad}}</td>
         <td>{{autor.descripcion}}</td>
         <td>
-          <a href="{% url 'libro:editar_autor' autor.id %}">Editar</a>
+          <a href="{% url 'libro:editar_autor' autor.id %}" class="btn btn-primary">Editar</a>
+          <!-- <a href="{% url 'libro:editar_autor' autor.id %}">Editar</a> -->
           <a href="{% url 'eliminar_autor' autor.id %}">Eliminar</a>
 
 
@@ -37,6 +44,7 @@ Listado de  Autores
     {% endfor %}
   </tbody>
 </table>
+</div>
 
 {% else %}
 <h1>No exiten autores registrados</h1>
